@@ -29,9 +29,8 @@
         "watson/validating": "~8.1"
     },
     "require-dev": {
-        "laravel/pint": "~1.21",
-        "nunomaduro/larastan": "~2.6 | ~3.0",
-        "orchestra/testbench": "^8.14",
+        "laravel/pint": "~1.29",
+        "larastan/larastan": "~2.6 | ~3.0",
         "pestphp/pest": "~2.24 | ~3.0 | ~4.0"
     },
     "autoload": {
