@@ -24,12 +24,12 @@ class Stub extends Eloquent
 
 test('model should validate attributes against rules when saved', function () {
     $language = dirname((new ReflectionClass(Translator::class))->getFileName()).'/lang';
-    $loader = new FileLoader(new Filesystem(), $language);
+    $loader = new FileLoader(new Filesystem, $language);
     $loader->addNamespace('lang', $language);
     $loader->load(locale: 'en', group: 'validation', namespace: 'lang');
     $validator = new Factory(new Translator($loader, 'en'));
 
-    $model = new Stub();
+    $model = new Stub;
     $model->setValidator($validator);
     $model->foo = null;
 

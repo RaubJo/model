@@ -7,6 +7,7 @@ namespace ArtisanSdk\Model\Concerns;
 use ArtisanSdk\Model\Exceptions\InvalidAttributes;
 use ArtisanSdk\Model\Observers\Validation as Observer;
 use BadMethodCallException;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Arr;
 use Watson\Validating\ValidatingTrait;
 
@@ -38,15 +39,15 @@ trait Validation
      */
     public static function bootValidation(): void
     {
-    	if (version_compare(App::version(), '12.0.0', '>=')) {
-    		static::whenBooted(function () {
-    			static::observe(ValidatingObserver::class);
-    		});
-    
-    		return;
-    	}
-    
-    	static::observe(new Observer());
+        if (version_compare(Application::VERSION, '12.0.0', '>=')) {
+            static::whenBooted(function () {
+                static::observe(ValidatingObserver::class);
+            });
+
+            return;
+        }
+
+        static::observe(new Observer);
     }
 
     /**
