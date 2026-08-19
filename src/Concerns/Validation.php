@@ -36,9 +36,17 @@ trait Validation
     /**
      * Boot the trait's observers.
      */
-    public static function bootValidation()
+    public static function bootValidation(): void
     {
-        static::observe(new Observer());
+    	if (version_compare(App::version(), '12.0.0', '>=')) {
+    		static::whenBooted(function () {
+    			static::observe(ValidatingObserver::class);
+    		});
+    
+    		return;
+    	}
+    
+    	static::observe(new Observer());
     }
 
     /**
