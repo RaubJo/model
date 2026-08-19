@@ -35,7 +35,7 @@ uses()->beforeEach(function () {
     {
         public function version(): string
         {
-            return Illuminate\Foundation\Application::VERSION;
+            return "0.0.0";
         }
     });
 })->afterEach(fn () => App::clearResolvedInstance('app'))->in('Unit');
