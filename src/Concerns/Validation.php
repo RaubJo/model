@@ -41,7 +41,7 @@ trait Validation
     {
         if (version_compare(Application::VERSION, '12.0.0', '>=')) {
             static::whenBooted(function () {
-                static::observe(ValidatingObserver::class);
+                static::observe(new Observer);
             });
 
             return;
